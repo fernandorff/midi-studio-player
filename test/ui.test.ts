@@ -160,6 +160,16 @@ describe('frontier theme', () => {
   });
 });
 
+describe('parchment theme', () => {
+  it("sets the game's parchment tokens and 44 px targets", async () => {
+    const mixer = await mount(Object.assign(new DtMixer(), { song: march, theme: 'parchment' }));
+    const style = getComputedStyle(mixer);
+    expect(style.getPropertyValue('--dt-player-bg')).toBe('#ece7d4');
+    expect(style.getPropertyValue('--dt-player-text')).toBe('#474129');
+    expect(getComputedStyle(buttons(mixer, 'Mudo')[0]!).minHeight).toBe('44px');
+  });
+});
+
 describe('dt-library', () => {
   it('lists every category with its count, empty ones included, in order', async () => {
     const lib = await mount(Object.assign(new DtLibrary(), { catalog, song: march }));

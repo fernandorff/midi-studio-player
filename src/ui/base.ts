@@ -77,10 +77,34 @@ export const tokens = css`
     /* room for 44 px Mute and Solo under the channel name */
     --dt-player-lane-height: 100px;
   }
+  /* the Dungeon Tactics game's 3D menu parchment and ink (its --ui3d-* tokens), the lab's colours since 18/11 */
+  :host([theme='parchment']) {
+    --dt-player-bg: #ece7d4;
+    --dt-player-surface: #f6f1db;
+    --dt-player-text: #474129;
+    --dt-player-muted: #5b5440;
+    --dt-player-primary: #332b1a;
+    --dt-player-on-primary: #fdebb4;
+    --dt-player-accent: #962b20;
+    --dt-player-navy: #2f5f94;
+    --dt-player-ochre: #7a6126;
+    --dt-player-line: #bbb4a2;
+    --dt-player-roll-bg: #2a2619;
+    --dt-player-roll-alt: #332b1a;
+    --dt-player-roll-grid: #5b5440;
+    --dt-player-roll-text: #fdebb4;
+    --dt-player-radius: 0;
+    --dt-player-border: 2px;
+    --dt-player-shadow: 4px 4px 0 #332b1a;
+    --dt-player-lane-height: 100px;
+  }
   /* 44 px touch targets; the :host() prefix outranks each component's own smaller sizes */
   :host([theme='frontier']) button,
   :host([theme='frontier']) select,
-  :host([theme='frontier']) input[type='range'] {
+  :host([theme='frontier']) input[type='range'],
+  :host([theme='parchment']) button,
+  :host([theme='parchment']) select,
+  :host([theme='parchment']) input[type='range'] {
     min-height: 44px;
   }
   :host([hidden]) {
