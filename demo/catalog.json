@@ -1,0 +1,279 @@
+{
+  "categories": [
+    {
+      "id": "batalha",
+      "label": "Batalha",
+      "order": 1
+    },
+    {
+      "id": "cidade",
+      "label": "Cidade",
+      "order": 2
+    },
+    {
+      "id": "vitoria",
+      "label": "Vitória",
+      "order": 3
+    },
+    {
+      "id": "derrota",
+      "label": "Derrota",
+      "order": 4
+    },
+    {
+      "id": "menu",
+      "label": "Menu",
+      "order": 5
+    },
+    {
+      "id": "cinematica",
+      "label": "Cinemática",
+      "order": 6
+    }
+  ],
+  "songs": [
+    {
+      "id": "batalha-c",
+      "title": "Marcha das Cinzas",
+      "category": "batalha",
+      "authorship": "Dungeon Tactics · tema de batalha C",
+      "story": "Ré menor, 132 bpm, 52 compassos. Compassos 1 a 4: intro com ostinato de violoncelo e rufo; 5 a 20: tema; 21 a 28: contraste em fá com oboé e cordas; 29 a 36: ponte com baixo cromático de ré a lá; 37 a 52: retorno com descante de cordas e final novo.",
+      "storyDraft": true,
+      "versions": [
+        {
+          "id": "fluidr3",
+          "label": "FluidR3",
+          "stemsBase": "assets/stems/batalha_C_fluidr3",
+          "midi": "assets/midi/batalha_C_fluidr3.mid",
+          "duration": 94.545442
+        },
+        {
+          "id": "gugs",
+          "label": "GeneralUser GS",
+          "stemsBase": "assets/stems/batalha_C_gugs",
+          "midi": "assets/midi/batalha_C_gugs.mid",
+          "duration": 94.545442
+        }
+      ],
+      "channels": [
+        {
+          "channel": 0,
+          "program": 42,
+          "name": "Cello"
+        },
+        {
+          "channel": 1,
+          "program": 43,
+          "name": "Contrabass"
+        },
+        {
+          "channel": 3,
+          "program": 60,
+          "name": "French Horn"
+        },
+        {
+          "channel": 4,
+          "program": 48,
+          "name": "String Ensemble 1"
+        },
+        {
+          "channel": 5,
+          "program": 47,
+          "name": "Timpani"
+        },
+        {
+          "channel": 6,
+          "program": 68,
+          "name": "Oboe"
+        },
+        {
+          "channel": 9,
+          "program": null,
+          "name": "Drums"
+        }
+      ],
+      "references": [
+        {
+          "label": "Final Fantasy Tactics · Trisection",
+          "url": "https://www.youtube.com/watch?v=q7W5zevSY-A",
+          "study": true
+        },
+        {
+          "label": "Final Fantasy Tactics · Attack Team",
+          "url": "https://www.youtube.com/watch?v=7KSjj07mBnw",
+          "study": true
+        },
+        {
+          "label": "Busca no YouTube: temas de batalha de Final Fantasy Tactics",
+          "url": "https://www.youtube.com/results?search_query=Final+Fantasy+Tactics+battle+theme"
+        }
+      ],
+      "measurements": [
+        {
+          "label": "Duração dos stems",
+          "value": "94,5 s",
+          "source": "stems.json das duas versões"
+        },
+        {
+          "label": "Média",
+          "value": "-20,0 dB",
+          "source": "lab, batalha.json: medido no áudio do render MuseScore General"
+        },
+        {
+          "label": "Pico",
+          "value": "-1,0 dB",
+          "source": "lab, batalha.json: medido no áudio do render MuseScore General"
+        },
+        {
+          "label": "Abaixo de 150 Hz",
+          "value": "15,0%",
+          "source": "lab, batalha.json: medido no áudio do render MuseScore General"
+        },
+        {
+          "label": "Entre 2 e 6 kHz",
+          "value": "10,0%",
+          "source": "lab, batalha.json: medido no áudio do render MuseScore General"
+        },
+        {
+          "label": "Fim do loop contra o começo",
+          "value": "+9,1 dB",
+          "source": "lab, batalha.json: medido no áudio do render MuseScore General"
+        }
+      ],
+      "checks": [
+        {
+          "text": "Duração, média e pico medidos",
+          "state": "done"
+        },
+        {
+          "text": "Crítica de teoria pela partitura e medições de sinal",
+          "state": "done"
+        },
+        {
+          "text": "Crítica independente às cegas",
+          "state": "done"
+        },
+        {
+          "text": "Alguém ouvir a faixa",
+          "state": "pending"
+        },
+        {
+          "text": "Originalidade contra as referências",
+          "state": "pending"
+        },
+        {
+          "text": "Decidir se o loop volta no compasso 5 (a intro reinicia mais fraca a cada volta)",
+          "state": "pending"
+        }
+      ]
+    },
+    {
+      "id": "pastoral-b",
+      "title": "Pão e Lareira",
+      "category": "cidade",
+      "authorship": "Dungeon Tactics · tema de cidade B",
+      "story": "Mi menor, 76 bpm, 40 compassos. Flauta e oboé agudos sobre violão, harpa e cordas; metade das seções se repete.",
+      "storyDraft": true,
+      "versions": [
+        {
+          "id": "fluidr3",
+          "label": "FluidR3",
+          "stemsBase": "assets/stems/pastoral_B_fluidr3",
+          "midi": "assets/midi/pastoral_B_fluidr3.mid",
+          "duration": 126.315782
+        },
+        {
+          "id": "gugs",
+          "label": "GeneralUser GS",
+          "stemsBase": "assets/stems/pastoral_B_gugs",
+          "midi": "assets/midi/pastoral_B_gugs.mid",
+          "duration": 126.315782
+        }
+      ],
+      "channels": [
+        {
+          "channel": 0,
+          "program": 24,
+          "name": "Nylon Guitar"
+        },
+        {
+          "channel": 1,
+          "program": 73,
+          "name": "Flute"
+        },
+        {
+          "channel": 2,
+          "program": 32,
+          "name": "Acoustic Bass"
+        },
+        {
+          "channel": 3,
+          "program": 46,
+          "name": "Orchestral Harp"
+        },
+        {
+          "channel": 4,
+          "program": 49,
+          "name": "String Ensemble 2"
+        },
+        {
+          "channel": 5,
+          "program": 68,
+          "name": "Oboe"
+        },
+        {
+          "channel": 9,
+          "program": null,
+          "name": "Drums"
+        }
+      ],
+      "references": [
+        {
+          "label": "Breath of Fire IV · Truth and Dreams",
+          "url": "https://www.youtube.com/watch?v=2pOVQIPnEiE",
+          "study": true
+        }
+      ],
+      "measurements": [
+        {
+          "label": "Duração dos stems",
+          "value": "126,3 s",
+          "source": "stems.json das duas versões"
+        },
+        {
+          "label": "Média",
+          "value": "-16,8 dB",
+          "source": "lab, pastoral.json: medido no áudio do render MuseScore General"
+        },
+        {
+          "label": "Abaixo de 150 Hz",
+          "value": "22,0%",
+          "source": "lab, pastoral.json: medido no áudio do render MuseScore General"
+        },
+        {
+          "label": "Fim do loop contra o começo",
+          "value": "-9,9 dB",
+          "source": "lab, pastoral.json: medido no áudio do render MuseScore General"
+        }
+      ],
+      "checks": [
+        {
+          "text": "Crítica pela partitura, crítica às cegas e medições de sinal",
+          "state": "done"
+        },
+        {
+          "text": "Bug do baixo em acordes invertidos confirmado no script",
+          "state": "done"
+        },
+        {
+          "text": "Alguém ouvir e escolher",
+          "state": "pending"
+        },
+        {
+          "text": "Comparar duas soundfonts num trecho da escolhida",
+          "state": "pending"
+        }
+      ]
+    }
+  ]
+}
