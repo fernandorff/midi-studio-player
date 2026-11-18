@@ -1,0 +1,6 @@
+node_modules/
+dist/
+coverage/
+# demo audio and MIDI are large and come from the host project
+demo/assets/
+*.log

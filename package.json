@@ -1,0 +1,47 @@
+{
+  "name": "midi-studio-player",
+  "version": "0.0.0",
+  "description": "A browser music player for pre-rendered MIDI stems: per-channel mixer, version A/B, piano roll. Engine and Lit web components.",
+  "license": "MIT",
+  "author": "Fernando Fonteles",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "dev": "vite demo --port 5310 --strictPort",
+    "demo:assets": "node scripts/demo-assets.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^26.6.6",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "happy-dom": "^21.0.4",
+    "prettier": "^3.9.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.2",
+    "vite": "^7.3.8",
+    "vitest": "^4.1.12"
+  },
+  "dependencies": {
+    "lit": "^3.3.3"
+  }
+}
