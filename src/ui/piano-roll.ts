@@ -119,7 +119,8 @@ export class DtPianoRoll extends PlayerElement {
   declare midi: Midi | undefined;
   declare midiFailed: boolean;
   #midiUrl: string | undefined;
-  #resize = new ResizeObserver(() => this.requestUpdate());
+  // hosts' test DOMs (jsdom) have no ResizeObserver; the roll then keeps its first size instead of failing to construct
+  #resize = globalThis.ResizeObserver ? new ResizeObserver(() => this.requestUpdate()) : undefined;
 
   constructor() {
     super();
@@ -128,7 +129,7 @@ export class DtPianoRoll extends PlayerElement {
 
   override disconnectedCallback() {
     super.disconnectedCallback();
-    this.#resize.disconnect();
+    this.#resize?.disconnect();
   }
 
   protected override willUpdate(changed: PropertyValues) {
@@ -232,7 +233,7 @@ export class DtPianoRoll extends PlayerElement {
   }
 
   protected override firstUpdated() {
-    this.#resize.observe(this);
+    this.#resize?.observe(this);
   }
 
   protected override updated() {
