@@ -1,6 +1,6 @@
 {
   "name": "midi-studio-player",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A browser music player for pre-rendered MIDI stems: per-channel mixer, version A/B, piano roll. Engine and Lit web components.",
   "license": "MIT",
   "author": "Fernando Fonteles",
