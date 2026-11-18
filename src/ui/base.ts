@@ -55,6 +55,34 @@ export const tokens = css`
     --dt-player-on-primary: #0f1719;
     --dt-player-shadow: 3px 3px 0 #000000;
   }
+  /* B-2 "Frontier Archive": pinned here so later changes to the default theme never move it */
+  :host([theme='frontier']) {
+    --dt-player-bg: #eaf0f5;
+    --dt-player-surface: #ffffff;
+    --dt-player-text: #0f172a;
+    --dt-player-muted: #4b5563;
+    --dt-player-primary: #1b494d;
+    --dt-player-on-primary: #ffffff;
+    --dt-player-accent: #d04a36;
+    --dt-player-navy: #1c3d5a;
+    --dt-player-ochre: #c98a2c;
+    --dt-player-line: #d0dce4;
+    --dt-player-roll-bg: #0b1517;
+    --dt-player-roll-alt: #102023;
+    --dt-player-roll-grid: #2a4448;
+    --dt-player-roll-text: #eef3f6;
+    --dt-player-radius: 0;
+    --dt-player-border: 2px;
+    --dt-player-shadow: 4px 4px 0 #1b494d;
+    /* room for 44 px Mute and Solo under the channel name */
+    --dt-player-lane-height: 100px;
+  }
+  /* 44 px touch targets; the :host() prefix outranks each component's own smaller sizes */
+  :host([theme='frontier']) button,
+  :host([theme='frontier']) select,
+  :host([theme='frontier']) input[type='range'] {
+    min-height: 44px;
+  }
   :host([hidden]) {
     display: none;
   }

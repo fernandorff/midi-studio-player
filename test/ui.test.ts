@@ -150,6 +150,16 @@ describe('dt-mixer with an engine', () => {
   });
 });
 
+describe('frontier theme', () => {
+  it('sets the B-2 tokens and 44 px targets', async () => {
+    const mixer = await mount(Object.assign(new DtMixer(), { song: march, theme: 'frontier' }));
+    const style = getComputedStyle(mixer);
+    expect(style.getPropertyValue('--dt-player-text')).toBe('#0f172a');
+    expect(style.getPropertyValue('--dt-player-shadow')).toBe('4px 4px 0 #1b494d');
+    expect(getComputedStyle(buttons(mixer, 'Mudo')[0]!).minHeight).toBe('44px');
+  });
+});
+
 describe('dt-library', () => {
   it('lists every category with its count, empty ones included, in order', async () => {
     const lib = await mount(Object.assign(new DtLibrary(), { catalog, song: march }));
