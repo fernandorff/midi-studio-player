@@ -98,13 +98,37 @@ export const tokens = css`
     --dt-player-shadow: 4px 4px 0 #332b1a;
     --dt-player-lane-height: 100px;
   }
+  /* the Dungeon Tactics lab's "Noite" scheme: blue-grey ground, navy leather, warm gold (the lab's colours since 18/11) */
+  :host([theme='night']) {
+    --dt-player-bg: #e5e9f0;
+    --dt-player-surface: #f2f4f8;
+    --dt-player-text: #1c2433;
+    --dt-player-muted: #4a5568;
+    --dt-player-primary: #1f2a3d;
+    --dt-player-on-primary: #eef1f7;
+    --dt-player-accent: #7a5f24;
+    --dt-player-navy: #27558f;
+    --dt-player-ochre: #8a6d2f;
+    --dt-player-line: #ccd3e0;
+    --dt-player-roll-bg: #141c2b;
+    --dt-player-roll-alt: #1f2a3d;
+    --dt-player-roll-grid: #4a5568;
+    --dt-player-roll-text: #eef1f7;
+    --dt-player-radius: 0;
+    --dt-player-border: 2px;
+    --dt-player-shadow: 4px 4px 0 #1f2a3d;
+    --dt-player-lane-height: 100px;
+  }
   /* 44 px touch targets; the :host() prefix outranks each component's own smaller sizes */
   :host([theme='frontier']) button,
   :host([theme='frontier']) select,
   :host([theme='frontier']) input[type='range'],
   :host([theme='parchment']) button,
   :host([theme='parchment']) select,
-  :host([theme='parchment']) input[type='range'] {
+  :host([theme='parchment']) input[type='range'],
+  :host([theme='night']) button,
+  :host([theme='night']) select,
+  :host([theme='night']) input[type='range'] {
     min-height: 44px;
   }
   :host([hidden]) {

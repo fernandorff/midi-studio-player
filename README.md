@@ -77,7 +77,7 @@ The default theme (`theme="field"`) follows the Dungeon Tactics lab design syste
 ochre on linen, square corners, 2 px borders and hard shadows. `theme="frontier"` pins the B-2 "Frontier Archive"
 identity (near-black ink, 4 px petrol shadow, darker roll) and raises every button, select and slider to 44 px, with
 taller lanes to fit them. `theme="parchment"` does the same in the Dungeon Tactics game's 3D menu colours (warm
-parchment, dark leather ink, gold). `theme="dark"` is an example dark theme. Any token can
+parchment, dark leather ink, gold). `theme="night"` is the same structure in blue-grey, navy and warm gold. `theme="dark"` is an example dark theme. Any token can
 be set on an ancestor:
 
 | Token                                                                                           | Default                                                        |

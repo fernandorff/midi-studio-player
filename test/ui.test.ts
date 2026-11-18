@@ -2,7 +2,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import type { Catalog, Song } from '../src/catalog/schema';
 import { PlayerEngine } from '../src/engine/PlayerEngine';
-import { DtLibrary, DtMixer, DtTransport, en } from '../src/index';
+import { DtLibrary, DtMixer, DtTransport, DtVersions, en } from '../src/index';
 import {
   barAt,
   barCount,
@@ -170,6 +170,14 @@ describe('parchment theme', () => {
   });
 });
 
+describe('night theme', () => {
+  it('sets the Noite tokens and 44 px targets', async () => {
+    const mixer = await mount(Object.assign(new DtMixer(), { song: march, theme: 'night' }));
+    expect(getComputedStyle(mixer).getPropertyValue('--dt-player-bg')).toBe('#e5e9f0');
+    expect(getComputedStyle(buttons(mixer, 'Mudo')[0]!).minHeight).toBe('44px');
+  });
+});
+
 describe('dt-library', () => {
   it('lists every category with its count, empty ones included, in order', async () => {
     const lib = await mount(Object.assign(new DtLibrary(), { catalog, song: march }));
@@ -185,7 +193,7 @@ describe('dt-library', () => {
   it('switches A|B on the engine and keeps the position', async () => {
     const engine = await engineFor(march);
     engine.seek(24);
-    const lib = await mount(Object.assign(new DtLibrary(), { catalog, engine }));
+    const lib = await mount(Object.assign(new DtVersions(), { engine }));
     const [a, b] = shadow(lib).querySelectorAll<HTMLButtonElement>('.switch button');
     expect([a!.getAttribute('aria-pressed'), b!.getAttribute('aria-pressed')]).toEqual(['true', 'false']);
     b!.click();
