@@ -74,7 +74,7 @@ export class DtLibrary extends PlayerElement {
       [part~='card'][aria-pressed='true'] {
         background: var(--_surface);
         color: var(--_text);
-        border-color: var(--_accent);
+        border-color: var(--_accent-ink);
         box-shadow: var(--_shadow);
       }
       .card-title {
@@ -86,7 +86,7 @@ export class DtLibrary extends PlayerElement {
         font-size: 20px;
       }
       [aria-pressed='true'] .card-title {
-        color: var(--_accent);
+        color: var(--_accent-ink);
       }
       .empty {
         padding: var(--_space);

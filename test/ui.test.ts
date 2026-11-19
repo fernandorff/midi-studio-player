@@ -2,7 +2,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import type { Catalog, Song } from '../src/catalog/schema';
 import { PlayerEngine } from '../src/engine/PlayerEngine';
-import { DtLibrary, DtMixer, DtTransport, DtVersions, en } from '../src/index';
+import { DtLibrary, DtMixer, DtTransport, en } from '../src/index';
 import {
   barAt,
   barCount,
@@ -190,19 +190,6 @@ describe('dt-library', () => {
     expect(shadow(lib).querySelector('.empty')!.textContent).toBe('Ainda não há músicas em Menu.');
   });
 
-  it('switches A|B on the engine and keeps the position', async () => {
-    const engine = await engineFor(march);
-    engine.seek(24);
-    const lib = await mount(Object.assign(new DtVersions(), { engine }));
-    const [a, b] = shadow(lib).querySelectorAll<HTMLButtonElement>('.switch button');
-    expect([a!.getAttribute('aria-pressed'), b!.getAttribute('aria-pressed')]).toEqual(['true', 'false']);
-    b!.click();
-    await lib.updateComplete;
-    expect(engine.version!.id).toBe('gugs');
-    expect(engine.position).toBe(24);
-    expect([a!.getAttribute('aria-pressed'), b!.getAttribute('aria-pressed')]).toEqual(['false', 'true']);
-  });
-
   it('picks a song from the cards and tells the host', async () => {
     const engine = await engineFor(march);
     const lib = await mount(Object.assign(new DtLibrary(), { catalog, engine }));
@@ -218,12 +205,10 @@ describe('dt-library', () => {
 });
 
 describe('dt-transport', () => {
-  it('shows the loop and the play state of the engine', async () => {
+  it('shows the play state of the engine', async () => {
     const engine = await engineFor(march);
     const t = await mount(Object.assign(new DtTransport(), { engine }));
-    expect(buttons(t, '↻ Repetir')[0]!.getAttribute('aria-pressed')).toBe('true');
-    buttons(t, '↻ Repetir')[0]!.click();
-    expect(engine.loop).toBe(false);
+    engine.setLoop(false);
     await engine.play();
     await t.updateComplete;
     expect(shadow(t).querySelector('.play')!.textContent!.trim()).toBe('❚❚ Pausar');

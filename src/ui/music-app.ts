@@ -67,7 +67,7 @@ export class DtMusicApp extends PlayerElement {
         color: var(--_muted);
       }
       .error {
-        color: var(--_accent);
+        color: var(--_accent-ink);
       }
       @media (max-width: 700px) {
         :host {
@@ -141,6 +141,7 @@ export class DtMusicApp extends PlayerElement {
     if (this.engine) return;
     this.#context = new AudioContext();
     this.engine = new PlayerEngine({ context: this.#context });
+    this.engine.setTreated(true); // the treated finish is the one to hear; the original is no longer offered
     if (this.song) void this.engine.setSong(this.song, this.versionId);
   };
 

@@ -24,7 +24,7 @@ export class DtTrackNotes extends PlayerElement {
       }
       .badge {
         background: var(--_accent);
-        color: #ffffff;
+        color: var(--_on-accent);
         padding: 0 10px;
         font-weight: 700;
       }
@@ -95,7 +95,7 @@ export class DtTrackNotes extends PlayerElement {
         background: var(--_bg);
       }
       .study {
-        color: var(--_accent);
+        color: var(--_accent-ink);
         font-weight: 700;
         white-space: nowrap;
       }

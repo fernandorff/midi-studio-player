@@ -66,7 +66,7 @@ export class DtMixer extends PlayerElement {
       button[aria-pressed='true'] {
         background: var(--_accent);
         border-color: var(--_accent);
-        color: #ffffff;
+        color: var(--_on-accent);
       }
       .vol {
         grid-column: 1;

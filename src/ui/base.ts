@@ -14,6 +14,9 @@ export const tokens = css`
     --_muted: var(--dt-player-muted, #4b5563);
     --_primary: var(--dt-player-primary, #1b494d);
     --_accent: var(--dt-player-accent, #d04a36);
+    --_on-accent: var(--dt-player-on-accent, #ffffff); /* text on an accent fill */
+    --_accent-ink: var(--dt-player-accent-ink, var(--_accent)); /* accent as text on a light surface */
+    --_gold-on-dark: var(--dt-player-gold-on-dark, var(--_ochre)); /* gold text on the dark transport bar */
     --_navy: var(--dt-player-navy, #1c3d5a);
     --_ochre: var(--dt-player-ochre, #c98a2c);
     --_line: var(--dt-player-line, #d0dce4);
@@ -106,7 +109,10 @@ export const tokens = css`
     --dt-player-muted: #4a5568;
     --dt-player-primary: #1f2a3d;
     --dt-player-on-primary: #eef1f7;
-    --dt-player-accent: #7a5f24;
+    --dt-player-accent: #d9b45a; /* fill: 7.3:1 on the navy bar, dark text on it 8.6:1 */
+    --dt-player-on-accent: #141c2b;
+    --dt-player-accent-ink: #7a5f24; /* text on the light surfaces, 5.5:1 */
+    --dt-player-gold-on-dark: #d9b45a;
     --dt-player-navy: #27558f;
     --dt-player-ochre: #8a6d2f;
     --dt-player-line: #ccd3e0;

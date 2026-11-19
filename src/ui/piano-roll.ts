@@ -41,7 +41,7 @@ export class DtPianoRoll extends PlayerElement {
         padding: 2px 10px;
       }
       .meta .pos {
-        color: var(--_accent);
+        color: var(--_accent-ink);
       }
       .track {
         position: relative;

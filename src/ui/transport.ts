@@ -1,4 +1,4 @@
-// Top of block 2: play/pause, time, the position bar, which version is sounding, loop and the master volume.
+// Top of block 2: play/pause, time, the position bar, which version is sounding and the master volume.
 import { css, html, nothing } from 'lit';
 import { PlayerElement, tokens } from './base';
 import type { AbState } from './library';
@@ -27,7 +27,7 @@ export class DtTransport extends PlayerElement {
       .play {
         background: var(--_accent);
         border-color: var(--_on-primary);
-        color: #ffffff;
+        color: var(--_on-accent);
         min-width: 112px;
         font-weight: 700;
       }
@@ -42,16 +42,7 @@ export class DtTransport extends PlayerElement {
         font-family: var(--_font-title);
         font-size: 18px;
         text-transform: uppercase;
-        color: var(--_ochre);
-      }
-      .slot {
-        display: inline-block;
-        min-width: 28px;
-        text-align: center;
-        background: var(--_accent);
-        color: #ffffff;
-        font-family: var(--_font-number);
-        padding: 0 6px;
+        color: var(--_gold-on-dark);
       }
       .seek {
         flex: 1 1 260px;
@@ -92,15 +83,12 @@ export class DtTransport extends PlayerElement {
     const playing = e?.state === 'playing';
     const pos = this.position;
     const total = this.duration;
-    const slot = this.ab?.[this.ab.active] === v?.id ? this.ab?.active.toUpperCase() : '';
-    const finish = e?.treated ? s.treated : s.original;
+    const finish = (e?.treated ?? true) ? s.treated : s.original;
     return html`<div part="transport">
       <button class="play" @click=${() => (playing ? e?.pause() : void e?.play())} ?disabled=${!v}>
         ${playing ? `❚❚ ${s.pause}` : `▶ ${s.play}`}
       </button>
-      <span class="now"
-        >${s.nowPlaying}: <strong>${slot ? `${slot} · ` : ''}${v?.label ?? '—'} · ${finish}</strong></span
-      >
+      <span class="now">${s.nowPlaying}: <strong>${v?.label ?? '—'} · ${finish}</strong></span>
       <span class="seek">
         <span class="num">${formatTime(pos)}</span>
         <input
@@ -115,7 +103,6 @@ export class DtTransport extends PlayerElement {
         />
         <span class="num">${formatTime(total)}</span>
       </span>
-      <button aria-pressed=${e?.loop ?? true} @click=${() => e?.setLoop(!e.loop)}>↻ ${s.loop}</button>
       <label
         >${s.volume}
         <input
