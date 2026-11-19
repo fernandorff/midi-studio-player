@@ -29,6 +29,8 @@ export class DtPianoRoll extends PlayerElement {
       [part='roll'] {
         display: grid;
         gap: 8px;
+        background: var(--_roll-bg); /* the roll is one black block, tempo line included */
+        color: var(--_roll-text);
       }
       .meta {
         display: flex;
@@ -37,11 +39,11 @@ export class DtPianoRoll extends PlayerElement {
         gap: 8px;
       }
       .meta .tempo {
-        border: var(--_border) solid var(--_line);
+        border: var(--_border) solid var(--_roll-grid);
         padding: 2px 10px;
       }
       .meta .pos {
-        color: var(--_accent-ink);
+        color: var(--_gold-on-dark);
       }
       .track {
         position: relative;
@@ -72,7 +74,7 @@ export class DtPianoRoll extends PlayerElement {
       .ruler {
         display: block;
         width: 100%;
-        height: 40px;
+        height: 48px;
       }
       [part='lane'] {
         height: var(--_lane);

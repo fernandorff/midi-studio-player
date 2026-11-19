@@ -62,13 +62,11 @@ events, so several views of one engine stay in step.
 - `<dt-library>`: category tabs with counts (an empty category says so) and song cards with search (title or
   authorship, case and accents ignored); the cards scroll after two rows. It fires `dt-song` (`{ song }`) and `dt-ab`
   (`{ a, b, active }`) so a host can follow the choice.
-- `<dt-versions>`: the version list of the sounding song, in a column beside the piano roll; it scrolls after a few
-  rows. Picking one plays it and fires `dt-ab`. The app always plays the treated finish.
 - `<dt-transport>`: play/pause, time and length, position bar, the sounding version and finish, master volume and
   stem loading. The song loops.
 - `<dt-piano-roll>`: tempo and bar count, clickable overview, bar ruler and one lane per channel with the active
   version's notes over the whole song. The needle follows playback; click or use the arrows (one bar) to seek.
-- `<dt-mixer>`: one strip per lane with colour, name, volume, Mute, Solo and the render it plays; M and S work on a
+- `<dt-mixer>`: a header that picks the version of the whole song, then one strip per lane with colour, name, volume, Mute, Solo and the render it plays; M and S work on a
   focused strip. Placed in the roll's `mixer` slot, the strips line up with the lanes.
 - `<dt-track-notes>`: story (with a Draft badge when `storyDraft`), where it plays, measurements with their source,
   checks done and pending, and references opening in a new tab ("study only" when `study`).

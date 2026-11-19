@@ -8,7 +8,7 @@ export class DtTrackNotes extends PlayerElement {
     css`
       [part='notes'] {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: calc(var(--_space) * 1.5);
       }
       .col {
@@ -132,8 +132,6 @@ export class DtTrackNotes extends PlayerElement {
         <p class="box">${song.story ?? s.noStory}</p>
         <h3>${s.whereItPlays}</h3>
         <p class="box">${song.whereItPlays ?? s.undecided}</p>
-      </div>
-      <div class="col">
         <h3>${s.measurements}</h3>
         ${
           song.measurements.length

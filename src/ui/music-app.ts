@@ -28,15 +28,32 @@ export class DtMusicApp extends PlayerElement {
         background: var(--_bg);
         padding: var(--_space);
       }
-      section {
-        background: var(--_surface);
+      /* one box: the song list, the black piano roll edge to edge, the notes; the sections only share its frame */
+      .app {
         border: var(--_border) solid var(--_primary);
         box-shadow: var(--_shadow);
+        background: var(--_surface);
+      }
+      section {
         padding: calc(var(--_space) * 1.25);
         display: grid;
         grid-template-columns: minmax(0, 1fr); /* lets the tabs and the roll scroll instead of widening the page */
         gap: var(--_space);
-        margin-bottom: calc(var(--_space) * 1.5);
+      }
+      section + section {
+        border-top: var(--_border) solid var(--_primary);
+      }
+      section.stage {
+        padding: 0;
+        gap: 0;
+        background: var(--_roll-bg);
+      }
+      .sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
       }
       h2 {
         text-transform: uppercase;
@@ -51,17 +68,6 @@ export class DtMusicApp extends PlayerElement {
         margin-right: 10px;
         background: var(--_accent);
       }
-      .stage {
-        display: grid;
-        grid-template-columns: minmax(200px, 260px) minmax(0, 1fr); /* versions beside the roll, never above it */
-        gap: var(--_space);
-        align-items: start;
-      }
-      .stage > div {
-        min-width: 0;
-        display: grid;
-        gap: var(--_space);
-      }
       .hints {
         margin: 0;
         color: var(--_muted);
@@ -75,9 +81,6 @@ export class DtMusicApp extends PlayerElement {
         }
         section {
           padding: 12px;
-        }
-        .stage {
-          grid-template-columns: minmax(0, 1fr);
         }
       }
     `,
@@ -166,28 +169,27 @@ export class DtMusicApp extends PlayerElement {
       </section>`;
     if (!this.catalog) return nothing;
     return html`
-      <section>
-        <h2>${s.library}</h2>
-        <dt-library
-          exportparts=${PARTS}
-          theme=${this.theme}
-          .catalog=${this.catalog}
-          .ab=${this.ab}
-          .engine=${this.engine}
-          .song=${this.song}
-          .versionId=${this.versionId}
-          .strings=${s}
-          @dt-song=${(e: CustomEvent<{ song: Song }>) => (this.song = e.detail.song)}
-          @dt-ab=${(e: CustomEvent<AbState>) => {
-            this.ab = e.detail;
-            this.versionId = e.detail[e.detail.active];
-          }}
-        ></dt-library>
-      </section>
-      <section>
-        <h2>${s.rollAndMixer}</h2>
-        <div class="stage">
-          <dt-versions
+      <div class="app">
+        <section>
+          <h2>${s.library}</h2>
+          <dt-library
+            exportparts=${PARTS}
+            theme=${this.theme}
+            .catalog=${this.catalog}
+            .ab=${this.ab}
+            .engine=${this.engine}
+            .song=${this.song}
+            .versionId=${this.versionId}
+            .strings=${s}
+            @dt-song=${(e: CustomEvent<{ song: Song }>) => (this.song = e.detail.song)}
+            @dt-ab=${(e: CustomEvent<AbState>) => {
+              this.ab = e.detail;
+              this.versionId = e.detail[e.detail.active];
+            }}
+          ></dt-library>
+        </section>
+        <section class="stage" aria-label=${s.rollAndMixer}>
+          <dt-transport
             exportparts=${PARTS}
             theme=${this.theme}
             .ab=${this.ab}
@@ -195,53 +197,39 @@ export class DtMusicApp extends PlayerElement {
             .song=${this.song}
             .versionId=${this.versionId}
             .strings=${s}
-            @dt-ab=${(e: CustomEvent<AbState>) => {
-              this.ab = e.detail;
-              this.versionId = e.detail[e.detail.active];
-            }}
-          ></dt-versions>
-          <div>
-            <dt-transport
-              exportparts=${PARTS}
-              theme=${this.theme}
-              .ab=${this.ab}
-              .engine=${this.engine}
-              .song=${this.song}
-              .versionId=${this.versionId}
-              .strings=${s}
-            ></dt-transport>
-            <dt-piano-roll
+          ></dt-transport>
+          <dt-piano-roll
+            exportparts=${PARTS}
+            theme=${this.theme}
+            .engine=${this.engine}
+            .song=${this.song}
+            .versionId=${this.versionId}
+            .strings=${s}
+          >
+            <dt-mixer
+              slot="mixer"
               exportparts=${PARTS}
               theme=${this.theme}
               .engine=${this.engine}
               .song=${this.song}
               .versionId=${this.versionId}
               .strings=${s}
-            >
-              <dt-mixer
-                slot="mixer"
-                exportparts=${PARTS}
-                theme=${this.theme}
-                .engine=${this.engine}
-                .song=${this.song}
-                .versionId=${this.versionId}
-                .strings=${s}
-              ></dt-mixer>
-            </dt-piano-roll>
-          </div>
-        </div>
-        <p class="hints">${s.hints}</p>
-      </section>
-      <section>
-        <h2>${s.notes}</h2>
-        <dt-track-notes
-          exportparts=${PARTS}
-          theme=${this.theme}
-          .engine=${this.engine}
-          .song=${this.song}
-          .strings=${s}
-        ></dt-track-notes>
-      </section>
+              @dt-version=${(e: CustomEvent<{ id: string }>) => (this.versionId = e.detail.id)}
+            ></dt-mixer>
+          </dt-piano-roll>
+        </section>
+        <section>
+          <h2>${s.notes}</h2>
+          <dt-track-notes
+            exportparts=${PARTS}
+            theme=${this.theme}
+            .engine=${this.engine}
+            .song=${this.song}
+            .strings=${s}
+          ></dt-track-notes>
+          <p class="hints">${s.hints}</p>
+        </section>
+      </div>
     `;
   }
 }

@@ -1,4 +1,5 @@
-// Block 2, left of the lanes: one channel strip per lane with colour, name, volume, Mute, Solo and the render it plays.
+// Block 2, left of the lanes: one channel strip per lane with colour, name, volume, Mute, Solo and the render it plays, under a header that picks
+// the version of the whole song.
 // Each strip is as tall as its lane (--dt-player-lane-height), and the header as tall as the ruler, so placed in the
 // piano roll's `mixer` slot the strips line up with the notes.
 import { css, html } from 'lit';
@@ -17,9 +18,11 @@ export class DtMixer extends PlayerElement {
         border-right-width: 0;
       }
       .head {
-        height: 40px;
+        height: 48px; /* as tall as the piano roll ruler; room for the 44 px select */
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        gap: 8px;
         padding: 0 12px;
         font-family: var(--_font-title);
         font-weight: 700;
@@ -83,6 +86,9 @@ export class DtMixer extends PlayerElement {
       .vol .num {
         width: 3ch;
         text-align: right;
+      }
+      .head select {
+        max-width: 220px;
       }
       select {
         grid-column: 2 / span 2;
@@ -177,8 +183,30 @@ export class DtMixer extends PlayerElement {
     </div>`;
   }
 
+  /** the version that sounds for the whole song; channels can still pick their own below */
+  #head() {
+    const s = this.strings;
+    const e = this.engine;
+    const now = e?.version?.id ?? this.activeVersion?.id;
+    return html`<div class="head">
+      <span>${s.mixerChannels}</span>
+      <select
+        aria-label=${s.versions}
+        @change=${(ev: Event) => {
+          const id = (ev.target as HTMLSelectElement).value;
+          this.versionId = id;
+          e?.setVersion(id);
+          this.dispatchEvent(new CustomEvent('dt-version', { detail: { id }, bubbles: true, composed: true }));
+        }}
+      >
+        ${(this.activeSong?.versions ?? []).map(
+          (v) => html`<option value=${v.id} .selected=${v.id === now}>${v.label}</option>`,
+        )}
+      </select>
+    </div>`;
+  }
+
   override render() {
-    return html`<div class="head">${this.strings.mixerChannels}</div>
-      ${this.lanes.map((c, i) => this.#strip(c, i))}`;
+    return html`${this.#head()} ${this.lanes.map((c, i) => this.#strip(c, i))}`;
   }
 }
